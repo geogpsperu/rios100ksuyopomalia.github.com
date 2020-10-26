@@ -1,0 +1,473 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width">
+        <meta name="mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <link rel="stylesheet" href="css/leaflet.css">
+        <link rel="stylesheet" href="css/qgis2web.css"><link rel="stylesheet" href="css/fontawesome-all.min.css">
+        <style>
+        #map {
+            width: 429px;
+            height: 595px;
+        }
+        </style>
+        <title></title>
+    </head>
+    <body>
+        <div id="map">
+        </div>
+        <script src="js/qgis2web_expressions.js"></script>
+        <script src="js/leaflet.js"></script>
+        <script src="js/leaflet.rotatedMarker.js"></script>
+        <script src="js/leaflet.pattern.js"></script>
+        <script src="js/leaflet-hash.js"></script>
+        <script src="js/Autolinker.min.js"></script>
+        <script src="js/rbush.min.js"></script>
+        <script src="js/labelgun.min.js"></script>
+        <script src="js/labels.js"></script>
+        <script src="data/RosdelPer_1.js"></script>
+        <script>
+        var map = L.map('map', {
+            zoomControl:true, maxZoom:28, minZoom:1
+        }).fitBounds([[-18.57165185030845,-81.55786535227315],[0.6562860081915645,-67.71245310003115]]);
+        var hash = new L.Hash(map);
+        map.attributionControl.setPrefix('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a> &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; <a href="https://qgis.org">QGIS</a>');
+        var autolinker = new Autolinker({truncate: {length: 30, location: 'smart'}});
+        var bounds_group = new L.featureGroup([]);
+        function setBounds() {
+        }
+        map.createPane('pane_CartoDarkWithout_0');
+        map.getPane('pane_CartoDarkWithout_0').style.zIndex = 400;
+        var layer_CartoDarkWithout_0 = L.tileLayer('https://basemaps.cartocdn.com/rastertiles/dark_nolabels/{z}/{x}/{y}.png', {
+            pane: 'pane_CartoDarkWithout_0',
+            opacity: 1.0,
+            attribution: '',
+            minZoom: 1,
+            maxZoom: 28,
+            minNativeZoom: 0,
+            maxNativeZoom: 18
+        });
+        layer_CartoDarkWithout_0;
+        map.addLayer(layer_CartoDarkWithout_0);
+        function pop_RosdelPer_1(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <th scope="row">Departamento:</th>\
+                        <td>' + (feature.properties['nombdep'] !== null ? autolinker.link(feature.properties['nombdep'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">WhatsApp:</th>\
+                        <td>' + (feature.properties['WhatsApp'] !== null ? autolinker.link(feature.properties['WhatsApp'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Contacto:</th>\
+                        <td>' + (feature.properties['Contacto'] !== null ? autolinker.link(feature.properties['Contacto'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Descargar:</th>\
+                        <td>' + (feature.properties['riosdescar'] !== null ? autolinker.link(feature.properties['riosdescar'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_RosdelPer_1_0(feature) {
+            switch(String(feature.properties['nombdep'])) {
+                case 'AMAZONAS':
+                    return {
+                pane: 'pane_RosdelPer_1',
+                opacity: 1,
+                color: 'rgba(0,0,0,0.636)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 2.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(247,251,255,0.636)',
+                interactive: true,
+            }
+                    break;
+                case 'ANCASH':
+                    return {
+                pane: 'pane_RosdelPer_1',
+                opacity: 1,
+                color: 'rgba(0,0,0,0.636)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 2.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(239,246,253,0.636)',
+                interactive: true,
+            }
+                    break;
+                case 'APURIMAC':
+                    return {
+                pane: 'pane_RosdelPer_1',
+                opacity: 1,
+                color: 'rgba(0,0,0,0.636)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 2.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(231,241,250,0.636)',
+                interactive: true,
+            }
+                    break;
+                case 'AREQUIPA':
+                    return {
+                pane: 'pane_RosdelPer_1',
+                opacity: 1,
+                color: 'rgba(0,0,0,0.636)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 2.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(223,236,248,0.636)',
+                interactive: true,
+            }
+                    break;
+                case 'AYACUCHO':
+                    return {
+                pane: 'pane_RosdelPer_1',
+                opacity: 1,
+                color: 'rgba(0,0,0,0.636)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 2.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(216,231,245,0.636)',
+                interactive: true,
+            }
+                    break;
+                case 'CAJAMARCA':
+                    return {
+                pane: 'pane_RosdelPer_1',
+                opacity: 1,
+                color: 'rgba(0,0,0,0.636)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 2.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(208,226,243,0.636)',
+                interactive: true,
+            }
+                    break;
+                case 'CALLAO':
+                    return {
+                pane: 'pane_RosdelPer_1',
+                opacity: 1,
+                color: 'rgba(0,0,0,0.636)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 2.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(200,221,240,0.636)',
+                interactive: true,
+            }
+                    break;
+                case 'CUSCO':
+                    return {
+                pane: 'pane_RosdelPer_1',
+                opacity: 1,
+                color: 'rgba(0,0,0,0.636)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 2.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(188,215,236,0.636)',
+                interactive: true,
+            }
+                    break;
+                case 'HUANCAVELICA':
+                    return {
+                pane: 'pane_RosdelPer_1',
+                opacity: 1,
+                color: 'rgba(0,0,0,0.636)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 2.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(176,210,232,0.636)',
+                interactive: true,
+            }
+                    break;
+                case 'HUANUCO':
+                    return {
+                pane: 'pane_RosdelPer_1',
+                opacity: 1,
+                color: 'rgba(0,0,0,0.636)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 2.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(163,204,227,0.636)',
+                interactive: true,
+            }
+                    break;
+                case 'ICA':
+                    return {
+                pane: 'pane_RosdelPer_1',
+                opacity: 1,
+                color: 'rgba(0,0,0,0.636)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 2.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(148,197,223,0.636)',
+                interactive: true,
+            }
+                    break;
+                case 'JUNIN':
+                    return {
+                pane: 'pane_RosdelPer_1',
+                opacity: 1,
+                color: 'rgba(0,0,0,0.636)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 2.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(131,188,220,0.636)',
+                interactive: true,
+            }
+                    break;
+                case 'LA LIBERTAD':
+                    return {
+                pane: 'pane_RosdelPer_1',
+                opacity: 1,
+                color: 'rgba(0,0,0,0.636)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 2.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(115,179,216,0.636)',
+                interactive: true,
+            }
+                    break;
+                case 'LAMBAYEQUE':
+                    return {
+                pane: 'pane_RosdelPer_1',
+                opacity: 1,
+                color: 'rgba(0,0,0,0.636)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 2.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(100,169,212,0.636)',
+                interactive: true,
+            }
+                    break;
+                case 'LIMA':
+                    return {
+                pane: 'pane_RosdelPer_1',
+                opacity: 1,
+                color: 'rgba(0,0,0,0.636)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 2.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(87,160,207,0.636)',
+                interactive: true,
+            }
+                    break;
+                case 'LORETO':
+                    return {
+                pane: 'pane_RosdelPer_1',
+                opacity: 1,
+                color: 'rgba(0,0,0,0.636)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 2.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(74,151,201,0.636)',
+                interactive: true,
+            }
+                    break;
+                case 'MADRE DE DIOS':
+                    return {
+                pane: 'pane_RosdelPer_1',
+                opacity: 1,
+                color: 'rgba(0,0,0,0.636)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 2.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(62,142,196,0.636)',
+                interactive: true,
+            }
+                    break;
+                case 'MOQUEGUA':
+                    return {
+                pane: 'pane_RosdelPer_1',
+                opacity: 1,
+                color: 'rgba(0,0,0,0.636)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 2.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(51,131,191,0.636)',
+                interactive: true,
+            }
+                    break;
+                case 'PASCO':
+                    return {
+                pane: 'pane_RosdelPer_1',
+                opacity: 1,
+                color: 'rgba(0,0,0,0.636)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 2.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(40,121,185,0.636)',
+                interactive: true,
+            }
+                    break;
+                case 'PIURA':
+                    return {
+                pane: 'pane_RosdelPer_1',
+                opacity: 1,
+                color: 'rgba(0,0,0,0.636)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 2.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(30,110,179,0.636)',
+                interactive: true,
+            }
+                    break;
+                case 'PUNO':
+                    return {
+                pane: 'pane_RosdelPer_1',
+                opacity: 1,
+                color: 'rgba(0,0,0,0.636)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 2.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(21,99,170,0.636)',
+                interactive: true,
+            }
+                    break;
+                case 'SAN MARTIN':
+                    return {
+                pane: 'pane_RosdelPer_1',
+                opacity: 1,
+                color: 'rgba(0,0,0,0.636)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 2.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(13,88,161,0.636)',
+                interactive: true,
+            }
+                    break;
+                case 'TACNA':
+                    return {
+                pane: 'pane_RosdelPer_1',
+                opacity: 1,
+                color: 'rgba(0,0,0,0.636)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 2.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(8,75,148,0.636)',
+                interactive: true,
+            }
+                    break;
+                case 'TUMBES':
+                    return {
+                pane: 'pane_RosdelPer_1',
+                opacity: 1,
+                color: 'rgba(0,0,0,0.636)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 2.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(8,61,127,0.636)',
+                interactive: true,
+            }
+                    break;
+                case 'UCAYALI':
+                    return {
+                pane: 'pane_RosdelPer_1',
+                opacity: 1,
+                color: 'rgba(0,0,0,0.636)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 2.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(8,48,107,0.636)',
+                interactive: true,
+            }
+                    break;
+            }
+        }
+        map.createPane('pane_RosdelPer_1');
+        map.getPane('pane_RosdelPer_1').style.zIndex = 401;
+        map.getPane('pane_RosdelPer_1').style['mix-blend-mode'] = 'normal';
+        var layer_RosdelPer_1 = new L.geoJson(json_RosdelPer_1, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_RosdelPer_1',
+            layerName: 'layer_RosdelPer_1',
+            pane: 'pane_RosdelPer_1',
+            onEachFeature: pop_RosdelPer_1,
+            style: style_RosdelPer_1_0,
+        });
+        bounds_group.addLayer(layer_RosdelPer_1);
+        map.addLayer(layer_RosdelPer_1);
+        setBounds();
+        </script>
+    </body>
+</html>
